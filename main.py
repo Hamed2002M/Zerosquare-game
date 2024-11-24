@@ -41,8 +41,6 @@ def main():
         ["X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X"],
     ]
 
-    # اختيار اللوح
-
     choose = input("Choose The Board You prefer To Play (1/2/3): ")
     if choose == "1":
         game = ZeroSquaresGame(10, board1)

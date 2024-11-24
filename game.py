@@ -1,5 +1,6 @@
 import copy
 from dfs_algorithem import Solver
+from dfsnew import DFS
 
 
 class ZeroSquaresGame:
@@ -194,8 +195,8 @@ class ZeroSquaresGame:
                 self.next_step()
                 continue
             elif move == "DFS":
-                solver = Solver(self)
-                if solver.solveDFS():
+                solver = DFS(self)
+                if solver.dfs(solver):
                     break
             elif move == "BFS":
                 solver = Solver(self)
