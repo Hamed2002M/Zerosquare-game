@@ -1,6 +1,7 @@
 import copy
 from dfs_algorithem import Solver
 from dfsnew import DFS_R
+from ucs import UCS_class
 
 
 class ZeroSquaresGame:
@@ -181,7 +182,7 @@ class ZeroSquaresGame:
                 print("Congratulations! You are the winner!")
                 break
             move = input(
-                "Enter move (w/a/s/d) or enter (h) to view the next state or DFS ,BFS,DFS_R: "
+                "Enter move (w/a/s/d) or enter (h) to view the next state or DFS ,BFS,DFS_R,UCS: "
             )
             if move == "w":
                 self = self.move(-1, 0)
@@ -208,6 +209,10 @@ class ZeroSquaresGame:
             elif move == "BFS":
                 solver = Solver(self)
                 if solver.solveBFS():
+                    break
+            elif move == "UCS":
+                ucs = UCS_class(self)
+                if ucs.ucs():
                     break
             else:
                 print("Invalid move")
