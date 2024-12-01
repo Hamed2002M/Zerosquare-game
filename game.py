@@ -1,4 +1,5 @@
 import copy
+from astar import AStar
 from dfs_algorithem import Solver
 from dfsnew import DFS_R
 from ucs import UCS_class
@@ -214,6 +215,10 @@ class ZeroSquaresGame:
                 ucs = UCS_class(self)
                 if ucs.ucs():
                     break
+            elif move == "a*":
+                ucs = AStar(self)
+                if ucs.a_star_algorithm():
+                    break
             else:
                 print("Invalid move")
                 continue
@@ -252,3 +257,23 @@ class ZeroSquaresGame:
                     next_steps.append(new_game)
         print(len(next_steps))
         return next_steps
+
+    def remaining_steps_to_win(self):
+        goals = {"GY", "GR", "GB", "GC"}
+        colored_squares = {"Y", "R", "B", "C"}
+        total_distance = 0
+
+        for x in range(self.n):
+            for y in range(self.n):
+                if self.board[x][y] in colored_squares:
+                    closest_goal_distance = float("inf")
+                    for i in range(self.n):
+                        for j in range(self.n):
+                            if self.board[i][j] in goals:
+                                distance = abs(x - i) + abs(y - j)
+                                closest_goal_distance = min(
+                                    closest_goal_distance, distance
+                                )
+                    total_distance += closest_goal_distance
+
+        return total_distance
